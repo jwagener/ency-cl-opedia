@@ -2,11 +2,11 @@ RWP.Navigation =
   scrollTo: (position) ->
     $.scrollTo position, 100, {offset: -50}
 
-  navigateTo: (url) ->
+  navigateTo: (url, updateHistory = true) ->
     @showNavigating()
     stateObj = {url: url}
     title = (s = url.split("/"); s[s.length - 1]).replace("_", " ")
-    history.pushState(stateObj, title, url)
+    history.pushState(stateObj, title, url) if updateHistory
     $("title").text(title)
     $.ajax
       dataType: "xml"
@@ -54,17 +54,13 @@ $ ->
   $(window).on "popstate", (e) ->
     state = e.originalEvent.state
     if state? && state.url?
-      RWP.Navigation.navigateTo(state.url)
+      RWP.Navigation.navigateTo(state.url, false)
 
   $(window).on "hashchange", (e) ->
     RWP.Navigation.scrollTo window.location.hash
 
-  $("a.bla").live "click", (e) ->
+  $("a").live "click", (e) ->
     url = $(this).prop("href")
     if RWP.Navigation.isAjaxLoadable(url)
       e.preventDefault()
-      console.log "navigate"
       RWP.Navigation.navigateTo url
-    else
-      console.log "nope"
-    console.log url
