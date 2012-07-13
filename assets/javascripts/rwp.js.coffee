@@ -55,7 +55,7 @@ $ ->
     e.stopImmediatePropagation()
     $dropdown = $($(this).attr('data-dropdown'))
     $(".dropdown-menu").not($dropdown).removeClass("open")
-    $dropdown.toggleClass("open").css("left", $(this).position().left - $dropdown.width() + 20)
+    $dropdown.toggleClass("open").css("left", $(this).position().left - $dropdown.width() + 45)
 
   $(document).on "mouseup", (e) ->
     unless $(e.target).hasClass("dropdown-toggle")
