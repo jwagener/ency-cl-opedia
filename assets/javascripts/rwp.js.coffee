@@ -35,7 +35,7 @@ RWP.processArticle = ->
   $(".toc-menu").html('')
   $toc = $(".toc td > ul").detach()
   $toc.addClass("dropdown-menu ui-menu dropdown-toc")
-  $toc.insertAfter(".dropdown-toggle-toc")
+  $toc.replaceAll(".dropdown-toc")
 
   $('<div class="rwp-flash ss-icon">warning<div class="rwp-flash-messages" /></div>').appendTo(".firstHeading")
   $(".ambox").appendTo(".rwp-flash-messages")
@@ -59,6 +59,6 @@ $ ->
 
   $(document).on "mouseup", (e) ->
     unless $(e.target).hasClass("dropdown-toggle")
-      $(".dropdown-menu").removeClass("open")
+      1 #$(".dropdown-menu").removeClass("open")
 
 document.write("<link rel='stylesheet' href='http://localhost:3000/assets/wikipedia.css' />)")

@@ -7,12 +7,20 @@
   .right
     %a.btn.dropdown-toggle.dropdown-toggle-toc.left{:href => "#", :title => "Table of Contents", "data-dropdown" => ".dropdown-toc"}
       %i.ss-icon rows
-    - # %ul.dropdown-menu.dropdown-toc.ui-menu will be placed here by js
+    %ul.dropdown-menu.dropdown-toc.ui-menu will be placed here by js
 
-    %a.btn.btn-share.dropdown-toggle.left{:href => "#", :title => "Share this Article", "data-dropdown" => ".dropdown-share"}
+    %a.btn.btn-share.dropdown-toggle.left{:href => "#", :title => "Share this Article", "data-dropdown" => ".dropdown-shar"}
       %i.ss-icon star
 
-    .dropdown-menu.dropdown-share
+    %ul.dropdown-menu.dropdown-shar
+      %li
+        %a
+          %span.ss-icon.ss-social-icon twitter
+          Share on Twitter
+      %li
+        %a
+          %span.ss-icon.ss-social-icon facebook
+          Share on Facebook
 
     %a.btn.btn-edit.left{href: "#edit", :title => "Edit this Article"}
       %i.ss-icon write
