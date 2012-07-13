@@ -2,6 +2,8 @@ require 'bundler'
 Bundler.setup :default
 require 'sinatra/base'
 require 'sprockets'
+require 'sprockets-sass'
+require 'compass'
 require './rewikipedia'
 
 map '/assets' do

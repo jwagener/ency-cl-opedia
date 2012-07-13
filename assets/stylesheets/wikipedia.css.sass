@@ -1,0 +1,182 @@
+// require fa
+//= require wikipedia_override 
+//= require ss-standard
+//= require ss-social
+//= require_self
+
+@import "compass/css3"
+
+@mixin square($size)
+  height: $size
+  width: $size
+
+
+body
+  font: 16px "Helvetica Neue", sans-serif
+  color: #222
+
+.header
+  a, a:active, a:visited
+    color: #222
+    text-decoration: none
+
+$headerContentHeight: 25px
+$headerPadding: 5px
+
+
+.rwp, .rwp *
+  @include box-sizing(border-box)
+
+.left
+  float: left
+
+.right
+  float: right
+
+.header
+  @include background(linear-gradient(top, #ddd, #999))
+  @include box-shadow(0 0 5px #666)
+  border-bottom: 1px solid #888
+  top: 0
+  left: 0
+  height: $headerContentHeight + $headerPadding * 2
+  width: 100%
+  min-width: 645px
+  position: fixed
+  z-index: 100
+  padding: $headerPadding 16px
+
+
+@media screen and (min-width: 982px)
+  .header
+    padding: $headerPadding 24px
+
+.brand
+  font-family: "Georgia"
+  font-size: 1.4em
+  background-image: url(/images/wiki-globe.png)
+  background-size: 25px
+  background-repeat: no-repeat
+  background-position: 0 2px
+  padding-left: 30px
+  line-height: $headerContentHeight
+  @include text-shadow(0px 1px 0px #999, -0px 1px 2px #fafafa)
+
+.search
+  height: $headerContentHeight
+  font-size: 0.9em
+  width: 250px
+  margin: 0 10px
+  padding: 0 5px
+  border: 1px solid #999
+  @include box-shadow(inset 0 3px 3px #eee, 0 1px 0 #bbb)
+  @include border-radius(5px)
+
+.btn
+  width: 36px
+  display: block
+  padding: 0 10px
+  margin: 0 0 0 10px
+  border: 1px solid #999
+  @include box-shadow(inset 0 1px 1px #ddd, 0 1px 0 #bbb)
+  @include border-radius(5px)
+  line-height: $headerContentHeight - 16px
+  font-size: 0.9em
+  height: $headerContentHeight
+  padding-top: 8px
+  color: rgba(0, 0, 0, 0.8)!important
+  @include text-shadow(0px 1px 0px #999, -0px 1px 2px #fafafa)
+
+.btn:hover
+  @include box-shadow(inset 0 1px 1px #bbb, 0 1px 0 #bbb, inset 0 0 10px #aaa)
+
+.dropdown-toggle
+  position: relative
+
+.dropdown-menu
+  display: none
+  position: absolute
+  width: 250px
+  top: 40px
+  left: -164px
+  z-index: 120
+  background-color: white
+  background-image: none
+  border: 1px solid #bbb
+  @include box-shadow(0 0 10px #aaa)
+  @include border-radius(5px)
+  padding: 0px
+
+.toc-menu
+  width: 400px
+
+.toc-menu ul
+  margin: 0
+  white-space: nowrap
+  width: 100%
+  overflow: hidden
+  text-overflow: ellipsis
+
+.toc-menu ul ul
+  padding-left: 15px
+
+.toc-menu li
+  list-style: none
+  padding: 5px
+
+.dropdown-toggle li
+  padding: 5px
+  line-height: 15px
+  font-size: 15px
+
+.ui-autocomplete li a
+  line-height: 15px
+  font-size: 15px
+  background-color: white
+  border-radius: 5px
+  width: 100%
+  height: 100%
+  display: block
+  padding: 5px
+
+.header .ui-state-hover
+  background: #eee !important
+  border: 0 !important
+  color: black
+
+.dropdown-toggle.open
+  @include box-shadow(inset 0 1px 1px #bbb, 0 1px 0 #bbb, inset 0 0 10px #aaa)
+
+.dropdown-menu.open
+  position: absolute
+  display: block
+
+.hidden
+  display: none
+
+.rwp-spinner
+  height: 50px
+  margin-top: 50px
+
+.rwp-flash
+  float: right
+  width: 100px
+  text-align: right
+  color: #333
+
+.rwp-flash-messages
+  position: absolute
+  margin-left: -80%
+  margin-top: -25px
+  z-index: 500
+  font-size: 0.6em
+  display: none
+  color: black
+  text-align: left
+
+.rwp-flash:hover .rwp-flash-messages
+  display: block
+
+.facebook
+  width: 100px
+  height: 22px

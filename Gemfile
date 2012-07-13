@@ -8,6 +8,5 @@ gem 'sprockets'
 gem 'coffee-script'
 gem 'sass'
 gem 'compass'
-
-
+gem 'sprockets-sass'
 gem 'httparty'

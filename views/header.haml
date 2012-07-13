@@ -1,0 +1,62 @@
+.header.rwp
+  %a.brand.left{:href => "#"} re:Wikipedia
+
+  %input.search.left{type: "text", name: "search", placeholder: "Search..."}
+
+  .right
+    %a.btn.dropdown-toggle.left{:href => "#", :title => "Table of Contents", "data-dropdown" => ".toc-menu"}
+      %i.ss-icon rows
+    .dropdown-menu.toc-menu
+
+    %a.btn.btn-share.dropdown-toggle.left{:href => "#", :title => "Share this Article", "data-dropdown" => ".dropdown-share"}
+      %i.ss-icon star
+
+    .dropdown-menu.dropdown-share
+
+    %a.btn.btn-edit.left{href: "#edit", :title => "Edit this Article"}
+      %i.ss-icon write
+
+    %a.btn.dropdown-toggle.left{:href => "#",  "data-dropdown" => ".dropdown-user"}
+      %i.ss-icon user
+    %ul.dropdown-menu.dropdown-user
+      %li
+        %a.enable-fb{href: "#"} Enable Facebook Activity Sharing
+      %li
+        %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"} Preferences
+      %li
+        %a{href: "http://en.wikipedia.org/w/index.php?title=Special:UserLogout&noreturnto"} Logout
+
+
+.hidden
+  .btn-toolbar.pull-right
+    .btn-group
+      %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "Table of Contents"}
+        %i.icon-th-list
+      .dropdown-menu.toc-menu
+
+    .btn-group
+      %a.btn.btn-share.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "Share this Article"}
+        %i.icon-heart
+      .dropdown-menu.dropdown-share
+
+
+
+    .btn-group
+      %a.btn.btn-edit{href: "#edit", :title => "Edit this Article"}
+        %i.icon-edit
+
+    .btn-group
+      %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.icon-user
+        Me
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a.enable-fb{href: "#"} Enable Facebook Activity Sharing
+        %li
+          %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"} Preferences
+        - #%li
+        - #  %a{href: "#"} Switch to normal Wikipedia
+        %li
+          %a{href: "http://en.wikipedia.org/w/index.php?title=Special:UserLogout&noreturnto"} Logout
+

@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'sinatra'
 require 'sinatra/reloader'
+#require 'sinatra/compass'
+require 'sprockets-sass'
 require 'haml'
 require 'httparty'
 
@@ -19,7 +21,7 @@ get '/*' do |article|
 end
 
 def fetch_wp_page(article)
-  res = HTTParty.get("http://en.wikipedia.org/wiki/#{article}")
+  res = HTTParty.get "http://en.wikipedia.org/wiki/#{article}", :headers => {"User-Agent" => "re:Wikipedia 0.1a"}
   body = res.body
   wp = Haml::Engine.new(File.read("views/wikipedia_hijack.haml")).render Object.new, {
     title:       body.match(/wgTitle\"\:\"([^\"]*)/)[1],
@@ -28,7 +30,7 @@ def fetch_wp_page(article)
     image:       "http:#{body.match(/src=\"(\/\/upload.wikimedia[^"]*)/)[1]}",
     root_url:    root_url
   }
-  res.gsub! "</head>", "#{wp}</head>"
+  body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/")
 end
 
 def root_url
