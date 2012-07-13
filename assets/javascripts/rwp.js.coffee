@@ -33,7 +33,10 @@ window.RWP =
 RWP.processArticle = ->
   RWP.trigger "articleLoaded"
   $(".toc-menu").html('')
-  $(".toc td").appendTo(".toc-menu")
+  $toc = $(".toc td > ul").detach()
+  $toc.addClass("dropdown-menu ui-menu dropdown-toc")
+  $toc.insertAfter(".dropdown-toggle-toc")
+
   $('<div class="rwp-flash ss-icon">warning<div class="rwp-flash-messages" /></div>').appendTo(".firstHeading")
   $(".ambox").appendTo(".rwp-flash-messages")
   RWP.setEditLink()
@@ -48,12 +51,11 @@ $ ->
   RWP.processArticle()
 
   $(".dropdown-toggle").live "click", (e) ->
-    console.log(e)
     e.preventDefault()
     e.stopImmediatePropagation()
     $dropdown = $($(this).attr('data-dropdown'))
     $(".dropdown-menu").not($dropdown).removeClass("open")
-    $dropdown.toggleClass("open").css("left", $(this).position().left - $dropdown.width() + 50)
+    $dropdown.toggleClass("open").css("left", $(this).position().left - $dropdown.width() + 20)
 
   $(document).on "mouseup", (e) ->
     unless $(e.target).hasClass("dropdown-toggle")

@@ -3,13 +3,13 @@
 //= require ss-standard
 //= require ss-social
 //= require_self
+//= require ui-menu
 
 @import "compass/css3"
 
 @mixin square($size)
   height: $size
   width: $size
-
 
 body
   font: 16px "Helvetica Neue", sans-serif
@@ -65,12 +65,20 @@ $headerPadding: 5px
 .search
   height: $headerContentHeight
   font-size: 0.9em
-  width: 250px
-  margin: 0 10px
+  width: 100%
   padding: 0 5px
   border: 1px solid #999
   @include box-shadow(inset 0 3px 3px #eee, 0 1px 0 #bbb)
   @include border-radius(5px)
+
+.search-box
+  width: 250px
+  margin: 0 10px
+  display: inline-block
+  position: relative
+
+.search-box .ui-autocomplete
+  width: 100% !important
 
 .btn
   width: 36px
@@ -96,7 +104,7 @@ $headerPadding: 5px
 .dropdown-menu
   display: none
   position: absolute
-  width: 250px
+  width: 300px
   top: 40px
   left: -164px
   z-index: 120
@@ -107,29 +115,15 @@ $headerPadding: 5px
   @include border-radius(5px)
   padding: 0px
 
-.toc-menu
+.dropdown-toc
   width: 400px
-
-.toc-menu ul
-  margin: 0
-  white-space: nowrap
-  width: 100%
-  overflow: hidden
-  text-overflow: ellipsis
-
-.toc-menu ul ul
-  padding-left: 15px
-
-.toc-menu li
-  list-style: none
-  padding: 5px
 
 .dropdown-toggle li
   padding: 5px
   line-height: 15px
   font-size: 15px
 
-.ui-autocomplete li a
+bla.ui-autocomplete li a
   line-height: 15px
   font-size: 15px
   background-color: white
@@ -148,7 +142,6 @@ $headerPadding: 5px
   @include box-shadow(inset 0 1px 1px #bbb, 0 1px 0 #bbb, inset 0 0 10px #aaa)
 
 .dropdown-menu.open
-  position: absolute
   display: block
 
 .hidden

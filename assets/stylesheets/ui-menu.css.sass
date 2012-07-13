@@ -1,0 +1,52 @@
+@import "compass/css3"
+
+.ui-menu
+  position: absolute
+  width: 300px
+  z-index: 120
+  background-color: #fff
+  background-image: none
+  border: 1px solid #bbb
+  @include box-shadow(0 0 10px #aaa)
+  @include border-radius(5px)
+  padding: 0px
+
+.ui-menu, .ui-menu ul
+  margin: 0
+
+.ui-menu ul
+  text-indent: 20px
+
+.ui-menu ul ul
+  text-indent: 40px
+
+.ui-menu ul ul ul
+  text-indent: 60px
+
+.ui-menu li
+  list-style: none
+
+.ui-menu li a
+  display: block
+  width: 100%
+  height: 100%
+  padding: 0 5px
+  white-space: nowrap
+  width: 100%
+  overflow: hidden
+  text-overflow: ellipsis
+
+.ui-menu li:first-child a
+  @include border-top-radius(5px)
+
+.ui-menu li:last-child a
+  @include border-bottom-radius(5px)
+
+.u-menu li li
+  @include border-radius(0)
+
+.ui-menu a:hover
+  background-color: #eee
+
+.ui-menu .ss-icon
+  vertical-align: middle

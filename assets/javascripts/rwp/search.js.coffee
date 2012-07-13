@@ -16,7 +16,7 @@ RWP.Search =
 
 $ ->
   $(".search").autocomplete
-    appendTo: $(".rwp.header")
+    appendTo: $(".search-box")
     create: (event, ui) ->
       $(".ui-autocomplete").addClass("dropdown-menu").width("248px");
     focus: (e) ->
