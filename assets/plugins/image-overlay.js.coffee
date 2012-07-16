@@ -3,9 +3,12 @@ RWP.registerPlugin "Image Overlay", ->
     $("a.image").on "click", (e) ->
       overlay = new RWP.Overlay()
       imageUrl = $(this).find("img").attr("src")
-      console.log(imageUrl)
-      imageUrl = imageUrl.replace(/\/\d*px-/, "/#{overlay.$e.width()}px-")
-      console.log(imageUrl)
-      overlay.$e.css("background-image", "url(#{imageUrl})")
+      width = 500 # overlay.$e.width()
+      scaledImageUrl = imageUrl.replace(/\/\d*px-/, "/#{width}px-")
+      $image = $("<img src='#{imageUrl}' class='rwp-overlay-image' />").appendTo(overlay.$e)
+      $scaledImage = $("<img src='#{scaledImageUrl}' class='rwp-overlay-image' />").hide().appendTo(overlay.$e).on "load", (e) ->
+        $image.remove()
+        $scaledImage.show()
+
       e.preventDefault()
       e.stopImmediatePropagation()

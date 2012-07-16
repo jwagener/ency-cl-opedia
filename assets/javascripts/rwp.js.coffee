@@ -1,6 +1,7 @@
 //= require_tree ./vendor
 //= require_self
 //= require_tree ./rwp
+//= require_tree ../plugins
 
 window.RWP =
   plugins: {}
@@ -59,6 +60,6 @@ $ ->
 
   $(document).on "mouseup", (e) ->
     unless $(e.target).hasClass("dropdown-toggle")
-      1 #$(".dropdown-menu").removeClass("open")
+      $(".dropdown-menu").removeClass("open")
 
 document.write("<link rel='stylesheet' href='http://localhost:3000/assets/wikipedia.css' />)")
