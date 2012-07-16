@@ -1,5 +1,5 @@
 RWP.Overlay = (options={}) ->
-  $(".rwp-overlay-wrapper").remove()
+  $(".rwp-overlay").remove()
 
   @$wrapper = $(".rwp-overlay-wrapper")
   if @$wrapper.length == 0
@@ -13,3 +13,7 @@ RWP.Overlay = (options={}) ->
     @$container.remove()
   @$container.appendTo(@$wrapper)
   this
+
+$(document).on "keyup", (e) ->
+  if e.keyCode == 27
+    $(".rwp-overlay").remove()
