@@ -9,18 +9,10 @@
       %i.ss-icon rows
     %ul.dropdown-menu.dropdown-toc.ui-menu will be placed here by js
 
-    %a.btn.btn-share.dropdown-toggle.left{:href => "#", :title => "Share this Article", "data-dropdown" => ".dropdown-shar"}
+    %a.btn.btn-share.dropdown-toggle.left{:href => "#", :title => "Share this Article", "data-dropdown" => ".dropdown-share"}
       %i.ss-icon heart
 
-    %ul.dropdown-menu.dropdown-shar
-      %li
-        %a
-          %span.ss-icon.ss-social-icon twitter
-          Share on Twitter
-      %li
-        %a
-          %span.ss-icon.ss-social-icon facebook
-          Share on Facebook
+    %ul.dropdown-menu.dropdown-share.ui-menu
 
     %a.btn.btn-edit.left{href: "#edit", :title => "Edit this Article"}
       %i.ss-icon write
@@ -30,8 +22,9 @@
     %ul.ui-menu.dropdown-menu.dropdown-user
       %li.ui-menu-item
         %a.enable-fb{href: "#"}
-          %span.ss-icon check
-          Enable Facebook Activity Sharing
+          %span.ss-social-icon facebook
+          Facebook Activity Sharing
+          %span.fb-sharing-state (off)
       %li.ui-menu-item
         %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"}
           %span.ss-icon settings
