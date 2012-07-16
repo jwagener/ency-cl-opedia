@@ -23,5 +23,3 @@ RWP.registerPlugin "Coordinates to Map", ->
         map.addLayer(cloudmade).setView(new L.LatLng(lat, lng), 7)
         marker = new L.Marker(new L.LatLng(lat, lng))
         map.addLayer(marker);
-
-        #overlay.$e.html("This should be a leaflet map for #{lng} #{lat}")
