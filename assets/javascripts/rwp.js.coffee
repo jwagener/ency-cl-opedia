@@ -31,6 +31,12 @@ window.RWP =
     $(RWP.Templates.header).prependTo("body");
     $('<meta name="viewport" content="width=640, initial-scale=1">').appendTo("head");
 
+RWP.addArticleIcon = ($e) ->
+  $rwpIcons = $(".rwp-icons")
+  if $rwpIcons.length == 0
+    $rwpIcons = $("<div class='rwp-icons' />").appendTo(".firstHeading")
+  $e.appendTo $rwpIcons
+
 RWP.processArticle = ->
   RWP.trigger "articleLoaded"
   $(".toc-menu").html('')
@@ -47,9 +53,9 @@ RWP.processArticle = ->
       $ambox.toggle()
     $ambox.hide()
 
-  $("#protected-icon a").addClass("ss-icon").text("lock").appendTo $rwpIcons
-  $("#spoken-icon a").addClass("ss-icon").text("volumehigh").appendTo $rwpIcons
-  $("#featured-star a").addClass("ss-icon").text("star").appendTo $rwpIcons
+  RWP.addArticleIcon $("#protected-icon a").addClass("ss-icon").text("lock")
+  RWP.addArticleIcon $("#spoken-icon a").addClass("ss-icon").text("volumehigh")
+  RWP.addArticleIcon $("#featured-star a").addClass("ss-icon").text("star")
 
   RWP.setEditLink()
 
