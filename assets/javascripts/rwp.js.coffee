@@ -38,8 +38,19 @@ RWP.processArticle = ->
   $toc.addClass("dropdown-menu ui-menu dropdown-toc")
   $toc.replaceAll(".dropdown-toc")
 
-  $('<div class="rwp-flash ss-icon">warning<div class="rwp-flash-messages" /></div>').appendTo(".firstHeading")
-  $(".ambox").appendTo(".rwp-flash-messages")
+  $rwpIcons = $("<div class='rwp-icons' />").appendTo(".firstHeading")
+
+  $ambox = $(".ambox")
+  if $ambox.length > 0
+    $('<a class="ss-icon rwp-icon-warning" href="#" title="Show Warnings">warning</a>').appendTo($rwpIcons).on "click", (e) ->
+      e.preventDefault()
+      $ambox.toggle()
+    $ambox.hide()
+
+  $("#protected-icon a").addClass("ss-icon").text("lock").appendTo $rwpIcons
+  $("#spoken-icon a").addClass("ss-icon").text("volumehigh").appendTo $rwpIcons
+  $("#featured-star a").addClass("ss-icon").text("star").appendTo $rwpIcons
+
   RWP.setEditLink()
 
 RWP.setEditLink = ->
