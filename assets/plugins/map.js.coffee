@@ -2,7 +2,7 @@ RWP.registerPlugin "Coordinates to Map", ->
   RWP.bind "articleLoaded", (e) ->
     geohackUrl = $("#coordinates a.external").attr("href");
     if geohackUrl
-      match = geohackUrl.match(/(-?\d+\.\d+)_N_(-?\d+\.\d+)_E/)
+      match = geohackUrl.match(/(-?\d+\.?\d+)_N_(-?\d+\.?\d+)_E/)
       lat = match[1]
       lng = match[2]
 
@@ -16,7 +16,7 @@ RWP.registerPlugin "Coordinates to Map", ->
 
         map = new L.Map(overlay.$e[0])
         cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/999551f2992c4486ad66b907b3a1e0ce/997/256/{z}/{x}/{y}.png', {
-          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+          attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> - <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a> - <a href="http://cloudmade.com">CloudMade</a>',
           maxZoom: 18
         })
 
