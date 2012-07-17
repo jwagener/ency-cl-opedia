@@ -66,6 +66,8 @@ $ ->
 
   $("a").live "click", (e) ->
     url = $(this).prop("href")
-    if RWP.Navigation.isAjaxLoadable(url)
+    if url.match /index\.php/
+      true
+    else if RWP.Navigation.isAjaxLoadable(url)
       e.preventDefault()
       RWP.Navigation.navigateTo url
