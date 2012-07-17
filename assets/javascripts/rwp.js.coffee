@@ -72,6 +72,7 @@ $ ->
     e.preventDefault()
     e.stopImmediatePropagation()
     $dropdown = $($(this).attr('data-dropdown'))
+    $dropdown.css "max-height", $(window).height() - 50
     $(".dropdown-menu").not($dropdown).removeClass("open")
     $dropdown.toggleClass("open").css("left", $(this).position().left - $dropdown.width() + 45)
 
