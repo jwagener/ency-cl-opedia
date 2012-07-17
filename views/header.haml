@@ -14,10 +14,15 @@
 
     %ul.dropdown-menu.dropdown-share.ui-menu
 
+      %li
+        %a.rwp-share-facebook-activity{:href => "#"}
+          %span.ss-social-icon facebook
+          Activate Facebook Activity Sharing
+
     %a.btn.btn-edit.left{href: "#edit", :title => "Edit this Article", :target => "_blank"}
       %i.ss-icon write
 
-    %a.btn.dropdown-toggle.left{:href => "#",  "data-dropdown" => ".dropdown-user"}
+    %a.btn.dropdown-toggle.left.hidden{:href => "#",  "data-dropdown" => ".dropdown-user"}
       %i.ss-icon home
     %ul.ui-menu.dropdown-menu.dropdown-user
       %li.ui-menu-item
