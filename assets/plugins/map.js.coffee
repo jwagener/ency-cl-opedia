@@ -4,7 +4,7 @@ RWP.Map =
     return null unless m
     c = m[1]
     split = c.split("_")
-    if split.length == 0
+    if split.length == 1
       c = parseFloat(c)
     else
       c = parseInt(split[0], 10) || 0
