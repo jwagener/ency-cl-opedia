@@ -1,7 +1,10 @@
 !!!
 %html
   %head
-    %title reWikipedia
-
-  %body
-    = yield
+    %title Ency.cl/opedia
+    %link{:rel => 'stylesheet', :href => "/assets/wikipedia.css"}
+    %script{:src => "/assets/rwp.js"}
+  %body.encycl-page
+    #fb-root
+    #content
+      = yield

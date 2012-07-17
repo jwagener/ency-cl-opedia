@@ -21,6 +21,14 @@ get '/opedia' do
   fetch_wp_page("")
 end
 
+get '/opedia/terms' do
+  haml :terms
+end
+
+get '/opedia/privacy' do
+  haml :privacy
+end
+
 get '/*' do |article|
   fetch_wp_page(article)
 end
