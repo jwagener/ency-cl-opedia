@@ -30,6 +30,7 @@ RWP.bind "articleLoaded", (e) ->
     $("#coordinates").remove()
     RWP.addArticleIcon $("<a href='#{geohackUrl}' class='ss-icon' title='Open Map'>location</a>").on "click", (e) ->
       e.preventDefault()
+      e.stopImmediatePropagation()
 
       overlay = new RWP.Overlay()
       overlay.$e.css

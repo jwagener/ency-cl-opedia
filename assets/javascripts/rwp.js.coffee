@@ -82,14 +82,14 @@ $ ->
   RWP.trigger("initialized")
   RWP.processArticle()
 
-  $(".dropdown-toggle").on "click", (e) ->
+  $(".dropdown-toggle").bind "click", (e) ->
     e.preventDefault()
     e.stopImmediatePropagation()
     $dropdown = $($(this).attr('data-dropdown'))
     $dropdown.css "max-height", $(window).height() - 50
     $(".dropdown-menu").not($dropdown).removeClass("open")
-    $dropdown.toggleClass("open").css("left", $(this).position().left - $dropdown.width() + 45)
+    if $dropdown.hasClass("open")
+      $dropdown.removeClass("open")
+    else
+      $dropdown.addClass("open").css("left", $(this).position().left - $dropdown.width() + 45)
 
-  $(document).on "mouseup", (e) ->
-    unless $(e.target).hasClass("dropdown-toggle")
-      $(".dropdown-menu").removeClass("open")
