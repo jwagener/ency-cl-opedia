@@ -5,6 +5,7 @@ require 'sinatra/reloader'
 require 'sprockets-sass'
 require 'haml'
 require 'httparty'
+require 'uri'
 
 MAX_AGE = 60
 before do
@@ -24,17 +25,31 @@ get '/*' do |article|
   fetch_wp_page(article)
 end
 
+class Wikipedia
+  include HTTParty
+  headers({"User-Agent" => "re:Wikipedia 0.1a"})
+  follow_redirects false
+  base_uri "http://en.wikipedia.org/wiki/"
+  def self.get_article(name)
+    self.get "/#{URI.escape(name)}"
+  end
+end
+
 def fetch_wp_page(article)
-  res = HTTParty.get "http://en.wikipedia.org/wiki/#{article}", :headers => {"User-Agent" => "re:Wikipedia 0.1a"}
-  body = res.body
-  wp = Haml::Engine.new(File.read("views/wikipedia_hijack.haml")).render Object.new, {
-    title:       body.match(/wgTitle\"\:\"([^\"]*)/)[1],
-    description: "bla",
-    url:         request.url,
-    image:       "http:#{body.match(/src=\"(\/\/upload.wikimedia[^"]*)/)[1]}",
-    root_url:    root_url
-  }
-  body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/")
+  res = Wikipedia.get_article article
+  if location = res.headers["location"]
+    redirect "/#{location.split("/").last}"
+  else
+    body = res.body
+    wp = Haml::Engine.new(File.read("views/wikipedia_hijack.haml")).render Object.new, {
+      title:       body.match(/wgTitle\"\:\"([^\"]*)/)[1],
+      description: "bla",
+      url:         request.url,
+      image:       "http:#{body.match(/src=\"(\/\/upload.wikimedia[^"]*)/)[1]}",
+      root_url:    root_url
+    }
+    body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/")
+  end
 end
 
 def root_url
