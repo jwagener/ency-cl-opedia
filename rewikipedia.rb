@@ -41,11 +41,16 @@ def fetch_wp_page(article)
     redirect "/#{location.split("/").last}"
   else
     body = res.body
+    if match = body.match(/src=\"(\/\/upload.wikimedia[^"]*\d\d\dpx[^"]*)/)
+      image = "http:#{match[1]}"
+    else
+      image = ""
+    end
     wp = Haml::Engine.new(File.read("views/wikipedia_hijack.haml")).render Object.new, {
       title:       body.match(/wgTitle\"\:\"([^\"]*)/)[1],
       description: "bla",
       url:         request.url,
-      image:       "http:#{body.match(/src=\"(\/\/upload.wikimedia[^"]*)/)[1]}",
+      image:       image,
       root_url:    root_url
     }
     body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/")
