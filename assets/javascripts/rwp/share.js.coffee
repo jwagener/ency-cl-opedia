@@ -12,5 +12,4 @@ RWP.Share =
     $("<li class='rwp-share-twitter'><a><span class='ss-social-icon'>twitter</span> Share to Twitter: #{twitter}</a></li>").appendTo(".dropdown-share")
 
 
-$ ->
-  $(".btn-share").on "click", RWP.Share.setShareDropdownContent
+RWP.bind "articleLoaded", RWP.Share.setShareDropdownContent

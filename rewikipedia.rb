@@ -29,6 +29,7 @@ get '/opedia/privacy' do
   haml :privacy
 end
 
+
 get '/*' do |article|
   fetch_wp_page(article)
 end
@@ -65,7 +66,10 @@ def fetch_wp_page(article)
       image:       image,
       root_url:    root_url
     }
-    body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/").gsub('"/w/index.php', "//en.wikipedia.org/w/index.php")
+
+    header = Haml::Engine.new(File.read("views/header.haml")).render
+    body = body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/").gsub('"/w/index.php', "//en.wikipedia.org/w/index.php")
+    body.gsub('<div id="mw-page-base" class="noprint">', "#{header}<div id='mw-page-base' class='noprint'>")
   end
 end
 

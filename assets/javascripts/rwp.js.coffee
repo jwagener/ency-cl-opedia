@@ -40,7 +40,6 @@ window.RWP =
     }
 
   hijackPage: ->
-    $(RWP.Templates.header).prependTo("body");
     $('<meta name="viewport" content="width=640, initial-scale=1">').appendTo("head");
 
 RWP.addArticleIcon = ($e) ->
@@ -83,7 +82,7 @@ $ ->
   RWP.trigger("initialized")
   RWP.processArticle()
 
-  $(".dropdown-toggle").live "click", (e) ->
+  $(".dropdown-toggle").on "click", (e) ->
     e.preventDefault()
     e.stopImmediatePropagation()
     $dropdown = $($(this).attr('data-dropdown'))
