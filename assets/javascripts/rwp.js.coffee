@@ -64,6 +64,7 @@ RWP.processArticle = ->
   $("#good-star a").hide()
 
   RWP.setEditLink()
+  RWP.Navigation.scrollTo(window.location.hash)
 
 RWP.setEditLink = ->
   article = RWP.getArticle()

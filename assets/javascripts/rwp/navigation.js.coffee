@@ -1,5 +1,7 @@
 RWP.Navigation = 
   scrollTo: (position) ->
+    if position == ""
+      position = 0
     $.scrollTo position, 100, {offset: -50}
 
   navigateTo: (url, updateHistory = true) ->
@@ -65,6 +67,8 @@ $ ->
     RWP.Navigation.scrollTo window.location.hash
 
   $("a").live "click", (e) ->
+    RWP.Overlay.removeAll()
+    $(".dropdown-menu").removeClass("open")
     url = $(this).prop("href")
     if url.match /index\.php/
       true
