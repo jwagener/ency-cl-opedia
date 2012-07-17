@@ -69,7 +69,8 @@ def fetch_wp_page(article)
 
     header = Haml::Engine.new(File.read("views/header.haml")).render
     body = body.gsub("</head>", "#{wp}<meta name='viewport' content='width=640, initial-scale=1'></head>").gsub("/wiki/", "/").gsub('"/w/index.php', "//en.wikipedia.org/w/index.php")
-    body.gsub('<div id="mw-page-base" class="noprint">', "#{header}<div id='mw-page-base' class='noprint'>")
+    ga = "<script type=text/javascript>  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-33462790-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>"
+    body.gsub('<div id="mw-page-base" class="noprint">', "#{header}#{ga}<div id='mw-page-base' class='noprint'>")
   end
 end
 

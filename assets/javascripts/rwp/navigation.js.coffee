@@ -20,6 +20,7 @@ RWP.Navigation =
         to = doc.indexOf("<!-- /content -->")
         content = doc.substring(from, to)
         $("#content").replaceWith(content)
+        _gaq.push(['_trackPageview'])
         RWP.processArticle()
 
   showNavigating: ->
