@@ -3,10 +3,18 @@ RWP.Map =
     m = url.match(reg)
     return null unless m
     c = m[1]
-    c = parseFloat(c.replace("_", ".").replace("_", ""))
+    split = c.split("_")
+    if split.length == 0
+      c = parseFloat(c)
+    else
+      c = parseInt(split[0], 10) || 0
+      c += (parseInt(split[1], 10) || 0) / 60
+      c += (parseInt(split[2], 10) || 0) / 3600
+
     if m[2] == "S" || m[2] == "W"
       c = 0 - c
     return c
+
   latLngFromGeohack: (url) ->
     latReg = new RegExp(/(-?\d+[\._]?\d+_?\d*)_([NS])/)
     lngReg = new RegExp(/(-?\d+[\._]?\d+_?\d*)_([EW])/)
@@ -28,11 +36,8 @@ RWP.bind "articleLoaded", (e) ->
         height: "400px"
 
       map = new L.Map(overlay.$e[0])
-      cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/999551f2992c4486ad66b907b3a1e0ce/997/256/{z}/{x}/{y}.png', {
-        attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> - <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a> - <a href="http://cloudmade.com">CloudMade</a>',
-        maxZoom: 18
-      })
+      bing = new L.TileLayer.Bing("Ag_G9YGvTnWtqqSsQ5S4s44ddrRS7GmC7WO94Vo-NoL_p1TiWdwsYcIDirB3_5q-", "AerialWithLabels");
 
-      map.addLayer(cloudmade).setView(latLng, 7)
+      map.addLayer(bing).setView(latLng, 7)
       marker = new L.Marker(latLng)
       map.addLayer(marker);
