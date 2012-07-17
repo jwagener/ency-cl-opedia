@@ -51,6 +51,7 @@ RWP.Navigation =
 
 
 $ ->
+  history.replaceState({url: window.location.toString()}, document.title, window.location.toString())
   $(window).on "popstate", (e) ->
     state = e.originalEvent.state
     if state? && state.url?
