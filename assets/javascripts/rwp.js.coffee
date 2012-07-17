@@ -10,10 +10,10 @@ window.RWP =
     RWP.plugins[name]()
 
   bind: (name, fn) ->
-    $("body").bind(name, fn)
+    $(document).bind(name, fn)
 
   trigger: (name, options) ->
-    $("body").trigger(name, options)
+    $(document).trigger(name, options)
 
   navigateTo: (url) ->
     RWP.Navigation.navigateTo(url)
