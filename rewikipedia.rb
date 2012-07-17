@@ -68,7 +68,7 @@ def fetch_wp_page(article)
     }
 
     header = Haml::Engine.new(File.read("views/header.haml")).render
-    body = body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/").gsub('"/w/index.php', "//en.wikipedia.org/w/index.php")
+    body = body.gsub("</head>", "#{wp}<meta name='viewport' content='width=640, initial-scale=1'></head>").gsub("/wiki/", "/").gsub('"/w/index.php', "//en.wikipedia.org/w/index.php")
     body.gsub('<div id="mw-page-base" class="noprint">', "#{header}<div id='mw-page-base' class='noprint'>")
   end
 end

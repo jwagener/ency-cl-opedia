@@ -39,8 +39,6 @@ window.RWP =
       encyclUrl: "http://ency.cl/#{slug}"
     }
 
-  hijackPage: ->
-    $('<meta name="viewport" content="width=640, initial-scale=1">').appendTo("head");
 
 RWP.addArticleIcon = ($e) ->
   $rwpIcons = $(".rwp-icons")
@@ -78,7 +76,6 @@ RWP.setEditLink = ->
   $(".btn-edit").attr("href", "http://en.wikipedia.org/w/index.php?title=#{article.pageName}&action=edit")
 
 $ ->
-  RWP.hijackPage()
   RWP.trigger("initialized")
   RWP.processArticle()
 
