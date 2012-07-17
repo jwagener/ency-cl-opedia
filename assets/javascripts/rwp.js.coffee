@@ -54,6 +54,7 @@ RWP.processArticle = ->
   $(".toc-menu").html('')
   $toc = $(".toc td > ul").detach()
   $toc.addClass("dropdown-menu ui-menu dropdown-toc")
+  $(".dropdown-toggle-toc").toggle $toc.find("li").length > 0
   $toc.replaceAll(".dropdown-toc")
 
   $rwpIcons = $("<div class='rwp-icons' />").appendTo(".firstHeading")
