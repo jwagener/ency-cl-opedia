@@ -57,7 +57,7 @@ def fetch_wp_page(article)
       image:       image,
       root_url:    root_url
     }
-    body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/")
+    body.gsub("</head>", "#{wp}</head>").gsub("/wiki/", "/").gsub('"/w/index.php', "//en.wikipedia.org/w/index.php")
   end
 end
 
