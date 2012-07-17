@@ -1,25 +1,18 @@
 setStateOn = ->
   $(".facebook-activity-sharing-state").text("(on)")
 
-postRead = ->
-  url = window.location.toString()
-  if RWP.isArticleUrl(url)
-    article = RWP.getArticle()
-    FB.api "/me/#{app.namespace}:reads", "post", {article: article.encycl_url}, () ->
-      console.log("posted to fb", arguments)
+postRead = (delay) ->
+  window.setTimeout (->
+    url = window.location.toString()
+    if RWP.isArticleUrl(url)
+      article = RWP.getArticle()
+      FB.api "/me/#{app.namespace}:read", "post", {article: article.encycl_url}, () ->
+        true
+  ), delay
 
-apps =
-  "ency.cl": 
-    id: 298824063549766
-    namespace: "news" # "ency-cl-opedia"
-  "en.wikipedia.org":
-    id: 399696543407905
-    namespace: "rewikipedia"
-  "ency.dev":
-    id: 344661862278618
-    namespace: "news" #"encydev"
-
-app = apps[window.location.hostname]
+app =
+  id: 399696543407905
+  namespace: "ency-cl-opedia"
 
 RWP.bind "initialized", ->
   FB.init
@@ -28,19 +21,16 @@ RWP.bind "initialized", ->
     cookie: true
     xfbml: false
 
-  console.log $(".enable-facebook-activity-sharing")
   $(".enable-facebook-activity-sharing").on "click", (e) ->
-    console.log(e)
     e.preventDefault()
     FB.login ((d) ->
       if d.status == "connected"
         setStateOn()
-        postRead()
-
+        postRead(0)
     ), {scope: "publish_actions"}
 
 RWP.bind "articleLoaded", ->
   FB.getLoginStatus (d) ->
     if d.status == "connected"
       setStateOn()
-      postRead()
+      postRead(0)
