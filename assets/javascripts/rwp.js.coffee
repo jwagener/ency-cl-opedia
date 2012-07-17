@@ -78,5 +78,3 @@ $ ->
   $(document).on "mouseup", (e) ->
     unless $(e.target).hasClass("dropdown-toggle")
       $(".dropdown-menu").removeClass("open")
-
-document.write("<link rel='stylesheet' href='http://ency.cl/assets/wikipedia.css' />)")
