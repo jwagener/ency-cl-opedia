@@ -18,6 +18,13 @@ window.RWP =
   trigger: (name, options) ->
     $(document).trigger(name, options)
 
+  flashMessage: (text) ->
+    $flash = $(".rwp-flash-message")
+    $flash.text(text).addClass("visible")
+    setTimeout (->
+      $flash.removeClass("visible")
+    ), 3000
+
   navigateTo: (url) ->
     RWP.Navigation.navigateTo(url)
 

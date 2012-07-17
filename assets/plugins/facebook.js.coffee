@@ -30,9 +30,11 @@ RWP.bind "initialized", ->
       if d.status == "connected"
         FB.logout()
         setState(false)
+        RWP.flashMessage("Facebook Activity Sharing is now off!")
       else
         FB.login ((d) ->
           if d.status == "connected"
+            RWP.flashMessage("Facebook Activity Sharing is now on!")
             setState(true)
             postRead(0)
         ), {scope: "publish_actions"}
