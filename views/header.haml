@@ -22,25 +22,20 @@
     %ul.ui-menu.dropdown-menu.dropdown-user
       %li.ui-menu-item
         %a.enable-facebook-activity-sharing{href: "#"}
-          %span.ss-social-icon facebook
-          Facebook Activity Sharing
-          %span.facebook-activity-sharing-state (off)
-      %li.ui-menu-item
+          %span.ss-icon check
+          Enable Facebook Activity Sharing
+
+      %li.ui-menu-item.rwp-encycl-only.hidden
+        %a{href: "#"}
+          %span.ss-icon cloudupload
+          Install On Wikipedia
+
+      %li.ui-menu-item.rwp-wikipedia-only.hidden
         %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"}
           %span.ss-icon settings
-          Preferences
+          Your Preferences
 
-        %ul
-          %li
-            %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"}
-              %span.ss-icon settings
-              Pref3
-          %li
-            %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"}
-              %span.ss-icon settings
-              Pref3
-
-      %li.ui-menu-item
+      %li.ui-menu-item.hidden
         %a{href: "http://en.wikipedia.org/w/index.php?title=Special:UserLogout&noreturnto"}
           %span.ss-icon user
           Logout
