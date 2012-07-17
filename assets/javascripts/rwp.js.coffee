@@ -61,6 +61,7 @@ RWP.processArticle = ->
   RWP.addArticleIcon $("#protected-icon a").addClass("ss-icon").text("lock")
   RWP.addArticleIcon $("#spoken-icon a").addClass("ss-icon").text("volumehigh")
   RWP.addArticleIcon $("#featured-star a").addClass("ss-icon").text("star")
+  $("#good-star a").hide()
 
   RWP.setEditLink()
 
