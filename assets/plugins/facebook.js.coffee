@@ -9,7 +9,8 @@ postRead = (delay) ->
     url = window.location.toString()
     if RWP.isArticleUrl(url)
       article = RWP.getArticle()
-      FB.api "/me/#{app.namespace}:read", "post", {wikipedia_article: article.encyclUrl}, () ->
+      #FB.api "/me/#{app.namespace}:read", "post", {wikipedia_article: article.encyclUrl}, () ->
+      FB.api "/me/news.reads", "post", {article: article.encyclUrl}, () ->
         true
   ), delay
 
@@ -39,9 +40,8 @@ RWP.bind "initialized", ->
             postRead(0)
         ), {scope: "publish_actions"}
 
-
 RWP.bind "articleLoaded", ->
   FB.getLoginStatus (d) ->
     if d.status == "connected"
       setState(true)
-      postRead(10)
+      postRead(10000)
