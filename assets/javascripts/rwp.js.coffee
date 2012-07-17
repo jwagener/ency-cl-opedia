@@ -4,10 +4,13 @@
 //= require_tree ../plugins
 
 window.RWP =
-  plugins: {}
-  registerPlugin: (name, fn) ->
-    RWP.plugins[name] = fn
-    RWP.plugins[name]()
+  isArticleUrl: (url) ->
+    if url.match /en\.wikipedia\.org\/wiki\//
+      true
+    else if url.match /\/\/ency/
+      true
+    else
+      false
 
   bind: (name, fn) ->
     $(document).bind(name, fn)
@@ -22,9 +25,11 @@ window.RWP =
     window.location.hostname == "en.wikipedia.org"
 
   getArticle: ->
+    slug = (p = window.location.pathname.split("/"); p[p.length - 1])
     {
       title: $(".firstHeading").text().replace(/^\s+|\s+$/g, '')
-      slug: (p = window.location.pathname.split("/"); p[p.length - 1])
+      slug: slug
+      encycl_url: "http://ency.cl/#{slug}"
     }
 
   hijackPage: ->
@@ -66,6 +71,7 @@ RWP.setEditLink = ->
 
 $ ->
   RWP.hijackPage()
+  RWP.trigger("initialized")
   RWP.processArticle()
 
   $(".dropdown-toggle").live "click", (e) ->
