@@ -13,6 +13,10 @@ end
 set :static_cache_control, [:public, :max_age => MAX_AGE]
 
 get '/' do
+  redirect '/opedia'
+end
+
+get '/opedia' do
   fetch_wp_page("")
 end
 
