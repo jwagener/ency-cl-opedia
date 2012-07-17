@@ -27,9 +27,9 @@ window.RWP =
   getArticle: ->
     slug = (p = window.location.pathname.split("/"); p[p.length - 1])
     {
-      title: $(".firstHeading").text().replace(/^\s+|\s+$/g, '')
-      slug: slug
-      encycl_url: "http://ency.cl/#{slug}"
+      title: $("h1 span").text()
+      pageName: slug
+      encyclUrl: "http://ency.cl/#{slug}"
     }
 
   hijackPage: ->
@@ -66,9 +66,8 @@ RWP.processArticle = ->
   RWP.setEditLink()
 
 RWP.setEditLink = ->
-  uri = new URI(window.location, decodeQuery: true)
-  uri.query.action = "edit"
-  $(".btn-edit").attr("href", uri.toString())
+  article = RWP.getArticle()
+  $(".btn-edit").attr("href", "http://en.wikipedia.org/w/index.php?title=#{article.pageName}&action=edit")
 
 $ ->
   RWP.hijackPage()
