@@ -9,11 +9,15 @@ RWP.Navigation =
     history.pushState(stateObj, title, url) if updateHistory
     $("title").text(title)
     $.ajax
-      dataType: "xml"
+      dataType: "html"
       url: url
+      error: (xhr) ->
+        $("#content").replaceWith("Failed to load :(")
       success: (doc) ->
-        newContent = $("#content", doc)
-        $("#content").replaceWith(newContent)
+        from = doc.indexOf("<!-- content -->")
+        to = doc.indexOf("<!-- /content -->")
+        content = doc.substring(from, to)
+        $("#content").replaceWith(content)
         RWP.processArticle()
 
   showNavigating: ->
