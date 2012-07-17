@@ -1,5 +1,6 @@
 setStateOn = ->
-  $(".facebook-activity-sharing-state").text("(on)")
+  $(".enable-facebook-activity-sharing").html("<span class='ss-icon'>delete</span> Disable Facebook Activity Sharing")
+  #$(".facebook-activity-sharing-state").text("(on)")
 
 postRead = (delay) ->
   window.setTimeout (->
@@ -23,11 +24,17 @@ RWP.bind "initialized", ->
 
   $(".enable-facebook-activity-sharing").on "click", (e) ->
     e.preventDefault()
-    FB.login ((d) ->
+    FB.getLoginStatus (d) ->
       if d.status == "connected"
-        setStateOn()
-        postRead(0)
-    ), {scope: "publish_actions"}
+        FB.login ((d) ->
+          if d.status == "connected"
+            setStateOn()
+            postRead(0)
+        ), {scope: "publish_actions"}
+      else
+        FB.logout()
+        $(".enable-facebook-activity-sharing").html("<span class='ss-icon'>check</span> Enable Facebook Activity Sharing")
+
 
 RWP.bind "articleLoaded", ->
   FB.getLoginStatus (d) ->
