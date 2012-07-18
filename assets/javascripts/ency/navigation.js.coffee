@@ -1,4 +1,4 @@
-RWP.Navigation = 
+ENCY.Navigation = 
   scrollTo: (position) ->
     if position == ""
       position = 0
@@ -7,7 +7,7 @@ RWP.Navigation =
   navigateTo: (url, updateHistory = true) ->
     @showNavigating()
     stateObj = {url: url}
-    title = RWP.extractTitleFromUrl(url)
+    title = ENCY.extractTitleFromUrl(url)
     title = "#{title} - Ency.cl/opedia"
     history.pushState(stateObj, title, url) if updateHistory
     $("title").text(title)
@@ -22,7 +22,7 @@ RWP.Navigation =
         content = doc.substring(from, to)
         $("#content").replaceWith(content)
         _gaq.push(['_trackPageview'])
-        RWP.processArticle()
+        ENCY.processArticle()
 
   showNavigating: ->
     $content = $("#content")
@@ -38,7 +38,7 @@ RWP.Navigation =
       trail: 60
       shadow: false
       hwaccel: false
-      className: 'rwp-spinner'
+      className: 'ency-spinner'
       zIndex: 2e9
       top: 'auto'
       left: 'auto'
@@ -63,17 +63,17 @@ $ ->
   $(window).on "popstate", (e) ->
     state = e.originalEvent.state
     if state? && state.url?
-      RWP.Navigation.navigateTo(state.url, false)
+      ENCY.Navigation.navigateTo(state.url, false)
 
   $(window).on "hashchange", (e) ->
-    RWP.Navigation.scrollTo window.location.hash
+    ENCY.Navigation.scrollTo window.location.hash
 
   $("a").live "click", (e) ->
-    RWP.Overlay.removeAll()
+    ENCY.Overlay.removeAll()
     $(".dropdown-menu").removeClass("open")
     url = $(this).prop("href")
     if url.match /index\.php/
       true
-    else if RWP.Navigation.isAjaxLoadable(url)
+    else if ENCY.Navigation.isAjaxLoadable(url)
       e.preventDefault()
-      RWP.Navigation.navigateTo url
+      ENCY.Navigation.navigateTo url

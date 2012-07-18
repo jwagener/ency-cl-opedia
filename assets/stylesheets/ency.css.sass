@@ -4,7 +4,7 @@
 //= require leaflet
 //= require_self
 //= require ui-menu
-//= require rwp-overlay
+//= require ency-overlay
 
 @import "compass/css3"
 
@@ -28,7 +28,7 @@ $headerContentHeight: 25px
 $headerPadding: 5px
 
 
-.rwp, .rwp *
+.ency, .ency *
   @include box-sizing(border-box)
 
 .left
@@ -144,26 +144,26 @@ $headerPadding: 5px
 .hidden
   display: none
 
-.rwp-spinner
+.ency-spinner
   height: 50px
   margin-top: 250px
 
-.rwp-icons
+.ency-icons
   float: right
   font-size: 16px
   position: relative
   bottom: -4px
   z-index: 95
 
-.rwp-icons a, .rwp-icons a:hover
+.ency-icons a, .ency-icons a:hover
   color: #333
   text-decoration: none
   margin-left: 10px
 
-.rwp-icon-warning, .rwp-icon-warning:hover
+.ency-icon-warning, .ency-icon-warning:hover
   color: #F28500!important
 
-.rwp-share-twitter iframe, .rwp-share-facebook iframe
+.ency-share-twitter iframe, .ency-share-facebook iframe
   width: 80px
   height: 22px
   float: right
@@ -172,7 +172,7 @@ $headerPadding: 5px
 .ss-social-icon
   vertical-align: middle
 
-.rwp-flash-message
+.ency-flash-message
   color: #333
   height: 100%
   width: 300px
@@ -193,7 +193,25 @@ $headerPadding: 5px
   line-height: 22px
   vertical-align: middle
 
-.rwp-flash-message.visible
+.ency-flash-message.visible
   top: -2px
   display: block
+
+
+.ency-onboarding
+  position: relative
+  display: block
+  font-size: 16px
+  background-color: rgba(0,0,0, 0.1)
+  //@include background(linear-gradient(top, #ddd, #aaa))
+  @include box-shadow(0 0 5px #666)
+  @include border-radius(5px)
+  border: 1px solid #ddd
+  padding: 10px
+  margin: 0 0 15px 0
+  h1
+    font-size: 18px
+    font-weight: bold
+    padding: 0
+    border: 0
 

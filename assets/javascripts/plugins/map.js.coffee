@@ -1,4 +1,4 @@
-RWP.Map =
+ENCY.Map =
   extractCoord: (reg, url) ->
     m = url.match(reg)
     return null unless m
@@ -18,21 +18,21 @@ RWP.Map =
   latLngFromGeohack: (url) ->
     latReg = new RegExp(/(-?\d+[\._]?\d+_?\d*)_([NS])/)
     lngReg = new RegExp(/(-?\d+[\._]?\d+_?\d*)_([EW])/)
-    lat = RWP.Map.extractCoord(latReg, url)
-    lng = RWP.Map.extractCoord(lngReg, url)
+    lat = ENCY.Map.extractCoord(latReg, url)
+    lng = ENCY.Map.extractCoord(lngReg, url)
 
     if lat && lng
       new L.LatLng(lat, lng)
 
-RWP.bind "articleLoaded", (e) ->
+ENCY.bind "articleLoaded", (e) ->
   geohackUrl = $("#coordinates a.external").attr("href");
-  if geohackUrl && latLng = RWP.Map.latLngFromGeohack(geohackUrl)
+  if geohackUrl && latLng = ENCY.Map.latLngFromGeohack(geohackUrl)
     $("#coordinates").remove()
-    RWP.addArticleIcon $("<a href='#{geohackUrl}' class='ss-icon' title='Open Map'>location</a>").on "click", (e) ->
+    ENCY.addArticleIcon $("<a href='#{geohackUrl}' class='ss-icon' title='Open Map'>location</a>").on "click", (e) ->
       e.preventDefault()
       e.stopImmediatePropagation()
 
-      overlay = new RWP.Overlay()
+      overlay = new ENCY.Overlay()
       overlay.$e.css
         height: "400px"
 

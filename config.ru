@@ -4,7 +4,7 @@ require 'sinatra/base'
 require 'sprockets'
 require 'sprockets-sass'
 require 'compass'
-require './rewikipedia'
+require './ency'
 
 map '/assets' do
   environment = Sprockets::Environment.new

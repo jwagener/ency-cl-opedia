@@ -1,9 +1,9 @@
 //= require_tree ./vendor
 //= require_self
-//= require_tree ./rwp
-//= require_tree ../plugins
+//= require_tree ./ency
+//= require_tree ./plugins
 
-window.RWP =
+window.ENCY =
   bind: (name, fn) ->
     $(document).bind(name, fn)
 
@@ -11,7 +11,7 @@ window.RWP =
     $(document).trigger(name, options)
 
   flashMessage: (text) ->
-    $flash = $(".rwp-flash-message")
+    $flash = $(".ency-flash-message")
     $flash.text(text).addClass("visible")
     setTimeout (->
       $flash.removeClass("visible")
@@ -22,7 +22,7 @@ window.RWP =
     decodeURIComponent(title)
 
   navigateTo: (url) ->
-    RWP.Navigation.navigateTo(url)
+    ENCY.Navigation.navigateTo(url)
 
   isOnWikipedia: ->
     window.location.hostname == "en.wikipedia.org"
@@ -35,32 +35,35 @@ window.RWP =
       encyclUrl: "http://ency.cl/#{slug}"
     }
 
-RWP.addArticleIcon = ($e) ->
-  $rwpIcons = $(".rwp-icons")
+ENCY.addArticleIcon = ($e) ->
+  $rwpIcons = $(".ency-icons")
   if $rwpIcons.length == 0
-    $rwpIcons = $("<div class='rwp-icons' />").appendTo(".firstHeading")
+    $rwpIcons = $("<div class='ency-icons' />").appendTo(".firstHeading")
   $e.appendTo $rwpIcons
 
-RWP.processToc = ->
+ENCY.processToc = ->
   $(".toc-menu").html('')
   $toc = $(".toc td > ul").detach()
   $toc.addClass("dropdown-menu ui-menu dropdown-toc")
   $(".dropdown-toggle-toc").toggle $toc.find("li").length > 0
   $toc.replaceAll(".dropdown-toc")
 
-RWP.processArticle = ->
-  RWP.trigger "articleLoaded"
-  RWP.processToc()
-  RWP.setEditLink()
-  RWP.Navigation.scrollTo(window.location.hash)
+ENCY.processArticle = ->
+  ENCY.trigger "articleLoaded"
+  ENCY.processToc()
+  ENCY.setEditLink()
+  ENCY.Navigation.scrollTo(window.location.hash)
 
-RWP.setEditLink = ->
-  article = RWP.getArticle()
+ENCY.setEditLink = ->
+  article = ENCY.getArticle()
   $(".btn-edit").attr("href", "http://en.wikipedia.org/w/index.php?title=#{article.pageName}&action=edit")
 
 $ ->
-  RWP.trigger("initialized")
-  RWP.processArticle()
+  $(".ency-onboarding").prependTo("#content").show()
+  $("#mp-topbanner").remove()
+
+  ENCY.trigger("initialized")
+  ENCY.processArticle()
 
   $(".dropdown-toggle").bind "click", (e) ->
     e.preventDefault()

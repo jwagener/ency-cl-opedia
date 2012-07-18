@@ -1,6 +1,20 @@
-.header.rwp
+.header.ency
   %a.brand.left{:href => "http://ency.cl/opedia"} Ency.cl/opedia
-  .rwp-flash-message
+  .ency-flash-message
+
+  .ency-onboarding{:style => "display: none;"}
+    %a.ency-overlay-close{:href => "#"}
+      .ss-icon close
+    %h1 Welcome to Ency.cl/opedia!
+    %p
+      Ency.cl/opedia is an expiriment to have a fresh take on the Wikipedia reading experience.
+      It's focus is on a simple design and features that improve exploration and curation, for example better maps & media integration and sharing to your social networks.
+
+    %p
+      It's just a start, but the best thing is that it is open-source and easily extendable. So if you have your own ideas about how to improve it feel free to hack on the source code.
+
+    %p
+      Enjoy discovering and sharing Wikipedia!
 
   .search-box
     %input.search.left{type: "text", name: "search", placeholder: "Search..."}
@@ -16,7 +30,7 @@
     %ul.dropdown-menu.dropdown-share.ui-menu
 
       %li
-        %a.rwp-share-facebook-activity{:href => "#"}
+        %a.ency-share-facebook-activity{:href => "#"}
           %span.ss-social-icon facebook
           Activate Facebook Activity Sharing
 
@@ -31,12 +45,12 @@
           %span.ss-icon check
           Enable Facebook Activity Sharing
 
-      %li.ui-menu-item.rwp-encycl-only.hidden
+      %li.ui-menu-item.ency-encycl-only.hidden
         %a{href: "#"}
           %span.ss-icon cloudupload
           Install On Wikipedia
 
-      %li.ui-menu-item.rwp-wikipedia-only.hidden
+      %li.ui-menu-item.ency-wikipedia-only.hidden
         %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"}
           %span.ss-icon settings
           Your Preferences
