@@ -18,7 +18,7 @@ get '/' do
 end
 
 get '/opedia' do
-  fetch_wp_page("")
+  fetch_wp_page("Main_Page")
 end
 
 get '/opedia/terms' do
@@ -57,7 +57,7 @@ def fetch_wp_page(article)
     end
 
     title = body.match(/title>([^<]*)/)[1]
-    title.gsub!(" - Wikipedia, the free encyclopedia", "")
+    title.gsub!("Wikipedia, the free encyclopedia", "").gsub!(" - ", "")
 
     wp = Haml::Engine.new(File.read("views/wikipedia_hijack.haml")).render Object.new, {
       title:       title,
@@ -69,7 +69,7 @@ def fetch_wp_page(article)
 
     header = Haml::Engine.new(File.read("views/header.haml")).render
     ga = "<script type=text/javascript>  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-33462790-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>"
-    body.gsub!(/<title>([^<]*)/, "<title>#{title} - Ency.cl/opedia")
+    body.gsub!(/<title>([^<]*)/, "<title>#{title}#{" - " unless title == "" }Ency.cl/opedia")
     body.gsub!("</head>", "#{wp}<meta name='viewport' content='width=640, initial-scale=1'></head>").gsub!("/wiki/", "/").gsub!('"/w/index.php', "//en.wikipedia.org/w/index.php")
     body.gsub!('<div id="mw-page-base" class="noprint">', "#{header}#{ga}<div id='mw-page-base' class='noprint'>")
   end
