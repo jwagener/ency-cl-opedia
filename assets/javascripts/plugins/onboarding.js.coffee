@@ -9,7 +9,7 @@ html = '<div class="ency-onboarding">
     </p>
     <p>
       This is just a start, the best thing is that it\'s open-source and easily extendable. So if you have your own ideas about how to improve the Wikipedia experience feel free to hack on the <a href="https://github.com/jwagener/ency-cl-opedia" target="_blank">source code</a>.
-      On my <a href="http://lolcat.biz/" target="_blank">blog</a> I wrote some more on my motiviation why I did this.
+      I wrote a bit more on my motivation behind this project on my <a href="http://lolcat.biz/" target="_blank">blog</a>.
     </p>
     <p>
       Enjoy discovering and sharing Wikipedia!
