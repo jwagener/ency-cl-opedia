@@ -5,7 +5,7 @@
 Ency.cl/opedia is an experiment to improve the Wikipedia reading experience.
 It's focus is on a clutter free, simple design and features that improve exploration and curation.
 
-This includes map and image overlays, sharing to social networks and Facebooks activity sharing.
+This includes map and image overlays, sharing to social networks and some more small details.
 And it is just a start, because the best thing is that it's open-source and easily extendable. So if you have your own ideas about how to improve the Wikipedia experience feel free to hack on the source code.
 
 On my <a href="http://lolcat.biz/" target="_blank">blog</a> I wrote some more on my motiviation why I did this.
