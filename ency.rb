@@ -58,10 +58,16 @@ def fetch_wp_page(article)
 
     title = body.match(/title>([^<]*)/)[1]
     title.gsub!("Wikipedia, the free encyclopedia", "").gsub!(" - ", "")
+    description = "The Wikipedia article about #{title}."
+
+    if title == ""
+      title = "Ency.cl/opedia"
+      description = "A simple Wikipedia reader."
+    end
 
     wp = Haml::Engine.new(File.read("views/wikipedia_hijack.haml")).render Object.new, {
       title:       title,
-      description: "The Wikipedia article about #{title}.",
+      description: description,
       url:         request.url,
       image:       image,
       root_url:    root_url
