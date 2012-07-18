@@ -59,9 +59,6 @@ ENCY.setEditLink = ->
   $(".btn-edit").attr("href", "http://en.wikipedia.org/w/index.php?title=#{article.pageName}&action=edit")
 
 $ ->
-  $(".ency-onboarding").prependTo("#content").show()
-  $("#mp-topbanner").remove()
-
   ENCY.trigger("initialized")
   ENCY.processArticle()
 
