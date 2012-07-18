@@ -1,5 +1,5 @@
 ENCY.FacebookActivitySharing =
-  actionName: "news.reads"
+  actionName: "ency-cl-opedia:study"
   app:
     id: 399696543407905
     namespace: "ency-cl-opedia"
@@ -19,7 +19,7 @@ ENCY.FacebookActivitySharing =
       url = window.location.toString()
       article = ENCY.getArticle()
       if ENCY.FacebookActivitySharing.isWorthSharing(article)
-        FB.api "/me/#{ENCY.FacebookActivitySharing.actionName}", "post", {article: article.encyclUrl}, () ->
+        FB.api "/me/#{ENCY.FacebookActivitySharing.actionName}", "post", {wikipedia_article: article.encyclUrl}, () ->
           true
     ), delay
 
