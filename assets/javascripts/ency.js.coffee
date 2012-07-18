@@ -51,7 +51,7 @@ ENCY.processToc = ->
 
 ENCY.processArticle = ->
   ENCY.trigger "articleLoad"
-  $("#firstHeading").css("display", "block") # workaround to weird wikipedia css that sometimes sets it to display: none
+  $("body").removeClass("page-Main_Page") # workaround to weird wikipedia css that sometimes sets it to display: none
   ENCY.processToc()
   ENCY.setEditLink()
   ENCY.Navigation.scrollTo(window.location.hash)
