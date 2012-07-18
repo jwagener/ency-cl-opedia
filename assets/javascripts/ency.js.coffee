@@ -5,10 +5,10 @@
 
 window.ENCY =
   bind: (name, fn) ->
-    $(document).bind(name, fn)
+    $(document).bind("ency-#{name}", fn)
 
   trigger: (name, options) ->
-    $(document).trigger(name, options)
+    $(document).trigger("ency-#{name}", options)
 
   flashMessage: (text) ->
     $flash = $(".ency-flash-message")
@@ -49,7 +49,7 @@ ENCY.processToc = ->
   $toc.replaceAll(".dropdown-toc")
 
 ENCY.processArticle = ->
-  ENCY.trigger "articleLoaded"
+  ENCY.trigger "articleLoad"
   ENCY.processToc()
   ENCY.setEditLink()
   ENCY.Navigation.scrollTo(window.location.hash)
@@ -59,7 +59,7 @@ ENCY.setEditLink = ->
   $(".btn-edit").attr("href", "http://en.wikipedia.org/w/index.php?title=#{article.pageName}&action=edit")
 
 $ ->
-  ENCY.trigger("initialized")
+  ENCY.trigger("ready")
   ENCY.processArticle()
 
   $(".dropdown-toggle").bind "click", (e) ->

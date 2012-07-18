@@ -12,4 +12,4 @@ ENCY.Share =
     $("<li class='ency-share-twitter'><a><span class='ss-social-icon'>twitter</span> Share to Twitter: #{twitter}</a></li>").appendTo(".dropdown-share")
 
 
-ENCY.bind "articleLoaded", ENCY.Share.setShareDropdownContent
+ENCY.bind "articleLoad", ENCY.Share.setShareDropdownContent

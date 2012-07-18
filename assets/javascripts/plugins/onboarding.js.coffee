@@ -13,7 +13,7 @@ html = '<div class="ency-onboarding">
     </p>
   </div>'
 
-ENCY.bind "initialized", ->
+ENCY.bind "ready", ->
   if ENCY.getArticle().pageName == "opedia"
     $onboarding = $(html).prependTo("#content")
     $("#mp-topbanner").remove()

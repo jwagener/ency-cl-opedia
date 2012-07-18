@@ -1,4 +1,4 @@
-ENCY.bind "articleLoaded", (e) ->
+ENCY.bind "articleLoad", (e) ->
   $("a.image").on "click", (e) ->
     overlay = new ENCY.Overlay()
     imageUrl = $(this).find("img").attr("src")

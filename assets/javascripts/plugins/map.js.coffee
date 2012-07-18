@@ -24,7 +24,7 @@ ENCY.Map =
     if lat && lng
       new L.LatLng(lat, lng)
 
-ENCY.bind "articleLoaded", (e) ->
+ENCY.bind "articleLoad", (e) ->
   geohackUrl = $("#coordinates a.external").attr("href");
   if geohackUrl && latLng = ENCY.Map.latLngFromGeohack(geohackUrl)
     $("#coordinates").remove()

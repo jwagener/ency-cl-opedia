@@ -1,2 +1,2 @@
-ENCY.bind "articleLoaded", ->
+ENCY.bind "articleLoad", ->
   $(".navbox").remove()

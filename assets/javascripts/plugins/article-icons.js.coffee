@@ -1,4 +1,4 @@
-ENCY.bind "articleLoaded", ->
+ENCY.bind "articleLoad", ->
   $rwpIcons = $("<div class='ency-icons' />").appendTo(".firstHeading")
 
   $ambox = $(".ambox")

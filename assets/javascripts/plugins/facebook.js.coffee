@@ -30,7 +30,7 @@ ENCY.FacebookActivitySharing =
       cookie: true
       xfbml: false
     $(".ency-share-facebook-activity").on "click", ENCY.FacebookActivitySharing.onStateToggle
-    ENCY.bind "articleLoaded", ENCY.FacebookActivitySharing.onArticleLoaded
+    ENCY.bind "articleLoad", ENCY.FacebookActivitySharing.onArticleLoaded
 
   onStateToggle: (e) =>
     e.preventDefault()
@@ -53,4 +53,4 @@ ENCY.FacebookActivitySharing =
         ENCY.FacebookActivitySharing.setState(true)
         ENCY.FacebookActivitySharing.postRead(10000)
 
-ENCY.bind "initialized", ENCY.FacebookActivitySharing.init
+ENCY.bind "ready", ENCY.FacebookActivitySharing.init
