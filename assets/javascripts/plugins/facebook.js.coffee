@@ -5,7 +5,7 @@ ENCY.FacebookActivitySharing =
 
   isWorthSharing: (article) ->
     s = article.pageName
-    !s.match(/Portal\:/) && !s.match(/File\:/) && !s.match(/Special\:/) && !s.match(/Main_Page/) && !s.match(/Wikipedia\:/)
+    !s.match(/Portal\:/) && !s.match(/File\:/) && !s.match(/Special\:/) && !s.match(/Main_Page/) && !s.match(/Wikipedia\:/) && s != "opedia"
 
   setState: (activate=true) ->
     if activate
