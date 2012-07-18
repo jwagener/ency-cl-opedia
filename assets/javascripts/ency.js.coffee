@@ -46,10 +46,12 @@ ENCY.processToc = ->
   $toc = $(".toc td > ul").detach()
   $toc.addClass("dropdown-menu ui-menu dropdown-toc")
   $(".dropdown-toggle-toc").toggle $toc.find("li").length > 0
-  $toc.replaceAll(".dropdown-toc")
+  if $toc.length > 0
+    $toc.replaceAll(".dropdown-toc")
 
 ENCY.processArticle = ->
   ENCY.trigger "articleLoad"
+  $("#firstHeading").css("display", "block") # workaround to weird wikipedia css that sometimes sets it to display: none
   ENCY.processToc()
   ENCY.setEditLink()
   ENCY.Navigation.scrollTo(window.location.hash)
