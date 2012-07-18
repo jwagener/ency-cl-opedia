@@ -25,6 +25,10 @@ window.RWP =
       $flash.removeClass("visible")
     ), 3000
 
+  extractTitleFromUrl: (url) ->
+    title = (s = url.split("/"); s[s.length - 1]).replace(/_/g, " ")
+    decodeURIComponent(title)
+
   navigateTo: (url) ->
     RWP.Navigation.navigateTo(url)
 

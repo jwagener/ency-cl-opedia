@@ -7,7 +7,8 @@ RWP.Navigation =
   navigateTo: (url, updateHistory = true) ->
     @showNavigating()
     stateObj = {url: url}
-    title = (s = url.split("/"); s[s.length - 1]).replace("_", " ")
+    title = RWP.extractTitleFromUrl(url)
+    title = "#{title} - Ency.cl/opedia"
     history.pushState(stateObj, title, url) if updateHistory
     $("title").text(title)
     $.ajax
