@@ -16,8 +16,8 @@ ENCY.Map =
     return c
 
   latLngFromGeohack: (url) ->
-    latReg = new RegExp(/(-?\d+[\._]?\d+_?\d*)_([NS])/)
-    lngReg = new RegExp(/(-?\d+[\._]?\d+_?\d*)_([EW])/)
+    latReg = new RegExp(/(-?\d+[\._]?\d+_?\d*\.?\d*)_([NS])/)
+    lngReg = new RegExp(/(-?\d+[\._]?\d+_?\d*\.?\d*)_([EW])/)
     lat = ENCY.Map.extractCoord(latReg, url)
     lng = ENCY.Map.extractCoord(lngReg, url)
 
