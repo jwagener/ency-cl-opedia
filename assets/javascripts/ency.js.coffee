@@ -59,7 +59,8 @@ ENCY.processArticle = ->
 
 ENCY.setEditLink = ->
   article = ENCY.getArticle()
-  $(".btn-edit").attr("href", "http://en.wikipedia.org/w/index.php?title=#{article.pageName}&action=edit")
+  $(".ency-edit-link").attr("href", "http://en.wikipedia.org/w/index.php?title=#{article.pageName}&action=edit")
+  $(".ency-wp-link").attr("href", "http://en.wikipedia.org/wiki/#{article.pageName}")
 
 $ ->
   ENCY.trigger("ready")

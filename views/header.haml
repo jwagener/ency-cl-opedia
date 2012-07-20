@@ -20,33 +20,18 @@
 
     %ul.dropdown-menu.dropdown-share.ui-menu
 
+    %a.btn.dropdown-toggle.left{:href => "#",  "data-dropdown" => ".dropdown-user"}
+      %i.ss-icon home
+    %ul.ui-menu.dropdown-menu.dropdown-user
       %li
         %a.ency-share-facebook-activity{:href => "#"}
           %span.ss-social-icon facebook
           Activate Facebook Activity Sharing
-
-    %a.btn.btn-edit.left{href: "#edit", :title => "Edit this Article", :target => "_blank"}
-      %i.ss-icon write
-
-    %a.btn.dropdown-toggle.left.hidden{:href => "#",  "data-dropdown" => ".dropdown-user"}
-      %i.ss-icon home
-    %ul.ui-menu.dropdown-menu.dropdown-user
       %li.ui-menu-item
-        %a.enable-facebook-activity-sharing{href: "#"}
-          %span.ss-icon check
-          Enable Facebook Activity Sharing
-
-      %li.ui-menu-item.ency-encycl-only.hidden
-        %a{href: "#"}
-          %span.ss-icon cloudupload
-          Install On Wikipedia
-
-      %li.ui-menu-item.ency-wikipedia-only.hidden
-        %a{href: "http://en.wikipedia.org/wiki/Special:Preferences"}
-          %span.ss-icon settings
-          Your Preferences
-
-      %li.ui-menu-item.hidden
-        %a{href: "http://en.wikipedia.org/w/index.php?title=Special:UserLogout&noreturnto"}
-          %span.ss-icon user
-          Logout
+        %a.ency-wp-link{href: ""}
+          %span.ss-icon layout
+          Read this article on Wikipedia
+      %li.ui-menu-item
+        %a.ency-edit-link{href: ""}
+          %span.ss-icon write
+          Edit this article on Wikipedia
