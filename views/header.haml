@@ -7,7 +7,8 @@
       .ss-icon close
 
   .search-box
-    %input.search.left{type: "text", name: "search", placeholder: "Search..."}
+    %form.search-form{:action => "/search"}
+      %input.search.left{type: "text", name: "q", placeholder: "Search..."}
 
   .right
     %a.btn.dropdown-toggle.dropdown-toggle-toc.left{:href => "#", :title => "Table of Contents", "data-dropdown" => ".dropdown-toc"}

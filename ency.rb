@@ -29,6 +29,10 @@ get '/opedia/privacy' do
   haml :privacy
 end
 
+get '/search' do
+  q = params[:q]
+  fetch_wp_page("../w/index.php?search=" + URI.escape(q))
+end
 
 get '/*' do |article|
   fetch_wp_page(article)
@@ -56,13 +60,13 @@ def fetch_wp_page(article)
       image = ""
     end
 
-    title = body.match(/title>([^<]*)/)[1]
-    title.gsub!("Wikipedia, the free encyclopedia", "").gsub!(" - ", "")
-    description = "The Wikipedia article about #{title}."
-
+    title = body.match(/title>([^<]*)/)[1] || ""
     if title == ""
       title = "Ency.cl/opedia"
       description = "A simple Wikipedia reader."
+      else
+        title = title.gsub("Wikipedia, the free encyclopedia", "").gsub(" - ", "")
+        description = "The Wikipedia article about #{title}."
     end
 
     wp = Haml::Engine.new(File.read("views/wikipedia_hijack.haml")).render Object.new, {
