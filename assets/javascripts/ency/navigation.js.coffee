@@ -25,7 +25,7 @@ ENCY.Navigation =
 
   extractMwConfigFromDoc: (doc) ->
     if mwConfigMatch = doc.match(/mw\.config\.set\((.*)\);/)
-      return mwConfig = JSON.parse(mwConfigMatch[1])
+      return mwConfig = JSON.parse(mwConfigMatch[1].replace(/\\\'/g, "'"))
 
   extractContentFromDoc: (doc) ->
     from = doc.indexOf("<!-- content -->")
