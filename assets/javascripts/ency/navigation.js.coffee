@@ -16,13 +16,16 @@ ENCY.Navigation =
       url: url
       error: (xhr) ->
         $("#content").replaceWith("Failed to load :(")
-      success: (doc) ->
-        from = doc.indexOf("<!-- content -->")
-        to = doc.indexOf("<!-- /content -->")
-        content = doc.substring(from, to)
+      success: (doc) =>
+        content = @extractContentFromDoc(doc)
         $("#content").replaceWith(content)
         _gaq.push(['_trackPageview'])
         ENCY.processArticle()
+
+  extractContentFromDoc: (doc) ->
+    from = doc.indexOf("<!-- content -->")
+    to = doc.indexOf("<!-- /content -->")
+    doc.substring(from, to)
 
   showNavigating: ->
     $content = $("#content")
