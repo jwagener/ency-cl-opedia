@@ -30,8 +30,8 @@ window.ENCY =
   getArticle: ->
     slug = (p = window.location.pathname.split("/"); p[p.length - 1])
     {
-      title: $("h1 span").text()
-      pageName: slug
+      title: mw.config.get("wgTitle")
+      pageName: mw.config.get("wgPageName")
       encyclUrl: "http://ency.cl/#{slug}"
     }
 
@@ -51,7 +51,7 @@ ENCY.processToc = ->
 
 ENCY.processArticle = ->
   ENCY.trigger "articleLoad"
-  if ENCY.getArticle().pageName != "opedia"
+  if ENCY.getArticle().pageName != "Main_Page"
     $("body").removeClass("page-Main_Page") # workaround to weird wikipedia css that sometimes sets it to display: none
   ENCY.processToc()
   ENCY.setEditLink()
