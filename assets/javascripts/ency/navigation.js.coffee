@@ -17,10 +17,15 @@ ENCY.Navigation =
       error: (xhr) ->
         $("#content").replaceWith("Failed to load :(")
       success: (doc) =>
+        mw.config.set @extractMwConfigFromDoc(doc)
         content = @extractContentFromDoc(doc)
         $("#content").replaceWith(content)
         _gaq.push(['_trackPageview'])
         ENCY.processArticle()
+
+  extractMwConfigFromDoc: (doc) ->
+    if mwConfigMatch = doc.match(/mw\.config\.set\((.*)\);/)
+      return mwConfig = JSON.parse(mwConfigMatch[1])
 
   extractContentFromDoc: (doc) ->
     from = doc.indexOf("<!-- content -->")
